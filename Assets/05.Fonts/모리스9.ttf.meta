@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 40f3bd257ce852e4d8fb48933b66a4ab
+timeCreated: 1503042672
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: morris9
+  fontNames:
+  - morris9
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
