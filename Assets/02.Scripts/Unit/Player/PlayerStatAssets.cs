@@ -14,7 +14,6 @@ public class PlayerStatAssets : UnitStat
     {
         if (CanHit(_ability.aUnit.acc))
         {
-            Debug.Log("맞았냐");
             currentHp = Mathf.Clamp(currentHp - DamageCalc(_ability.aUnit.damage, _ability.aCoef), 0, maxHp);
             return true;
         }

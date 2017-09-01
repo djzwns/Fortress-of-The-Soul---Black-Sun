@@ -17,6 +17,7 @@ public class AbilityAction : MonoBehaviour
     private float nextReadyTime;
     
     private CharacterController cc;
+    private Status status;
 
     void Start()
     {
@@ -36,6 +37,7 @@ public class AbilityAction : MonoBehaviour
         coolDownDuration = ability.aCoolDown;
         ability.Initialize(_weaponHolder);
         cc = _weaponHolder.GetComponent<CharacterController>();
+        status = _weaponHolder.GetComponent<Status>();
     }
 
     public void Action()
@@ -47,9 +49,13 @@ public class AbilityAction : MonoBehaviour
 
     private bool CanAction()
     {
-        // "반드시" 수정할 부분
-        float currentSp = cc.gameObject.GetComponent<PlayerStat>().stat.currentSp;
-        return (currentSp >= reqSp) && (Time.time > nextReadyTime) && (cc.AnimationCompleted() || ability.aSpecial);
+        // 스킬을 사용 가능한 sp가 없을 때 false 반환.
+        if (!status.CanDoSkill(reqSp)) return false;
+
+        // 쿨타임이 아직 안돌았을 때 false 반환.
+        if (Time.time <= nextReadyTime) return false;
+
+        return (cc.AnimationCompleted() || ability.aSpecial) ;
     }
 
     private void AbilityTriggerd()
